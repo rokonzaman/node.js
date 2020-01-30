@@ -9,28 +9,28 @@ pipeline {
         git 'https://github.com/rokonzaman/node.js.git'
       }
     }
-    stage ("Test Code")
-    {
-      steps {
-        sh "cd /root/rokon/nodejs/frontend/node.js && npm run test"
-      }
-    }
     stage ("Build Code")
     {
       steps {
         sh "cd /root/rokon/nodejs/frontend/node.js && npm run build"
       }
     }
-    stage ("Push")
+    stage ("Image Create")
     {
       steps {
-        sh "docker push rokonzaman/rolling-update-app:3.0"
+        sh "docker build -t rokonzaman/nodeapp:latest /root/rokon/nodejs/frontend/node.js/."
       }
     }
-    stage ("Deployment")
+    stage ("Push Image")
     {
       steps {
-        sh "kubectl -n private apply -f ~/nginx.yaml"
+        sh "docker push rokonzaman/nodeapp:latest"
+      }
+    }
+    stage ("Remove Image")
+    {
+      steps {
+        sh "docker rmi rokonzaman/nodeapp:latest -f"
       }
     }
   }
