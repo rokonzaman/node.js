@@ -34,4 +34,15 @@ pipeline {
       }
     }
   }
+  agent {
+        label "kubernetes"
+  }
+  stages {
+    stage ("Deploy")
+    {
+      steps {
+        sh 'kubectl apply -f /root/netcore.yaml'
+      }
+    }
+  }
 }
