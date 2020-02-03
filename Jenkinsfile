@@ -33,8 +33,6 @@ pipeline {
         sh "docker rmi rokonzaman/nodeapp:latest -f"
       }
     }
-  }
-}
     stage ("Deploy")
     {
       agent {
