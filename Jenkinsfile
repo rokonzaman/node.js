@@ -14,7 +14,7 @@ pipeline {
                 label "nodejs"
             }
             steps {
-                sh "/root/rokon/jenkins_agent/node.js/workspace/Node.js_master && npm run build"
+                sh "cd /root/rokon/jenkins_agent/node.js/workspace/Node.js_master && npm run build"
             }
         }
         stage('Image Create') {
