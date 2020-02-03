@@ -33,13 +33,15 @@ pipeline {
         sh "docker rmi rokonzaman/nodeapp:latest -f"
       }
     }
+  }
+}
     stage ("Deploy")
     {
       agent {
         label "kubernetes"
       }
       steps {
-        sh 'kubectl apply -f /root/netcore.yaml'
+        sh 'kubectl apply -f /root/nodeapp.yaml'
       }
     }
   }
