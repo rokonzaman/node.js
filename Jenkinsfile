@@ -14,7 +14,7 @@ pipeline {
                 label "nodejs"
             }
             steps {
-                sh "cd /root/rokon/nodejs/frontend/node.js && npm run build"
+                sh "/root/rokon/jenkins_agent/node.js/workspace/Node.js_master && npm run build"
             }
         }
         stage('Image Create') {
@@ -22,7 +22,7 @@ pipeline {
                 label "nodejs"
             }
             steps {
-                sh "docker build -t rokonzaman/nodeapp:latest /root/rokon/nodejs/frontend/node.js/."
+                sh "docker build -t rokonzaman/nodeapp:latest /root/rokon/jenkins_agent/node.js/workspace/Node.js_master/."
             }
         }
         stage('Push Image') {
