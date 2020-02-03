@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-         Hi, This is Rokon. I am Learning Docker.
+         Hi, This is Rokon. I have successfully completed my Jenkins Pipeline.
         </p>
         <a
           className="App-link"
