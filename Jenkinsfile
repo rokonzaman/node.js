@@ -49,6 +49,14 @@ pipeline {
                 sh 'kubectl apply -f /root/nodeapp.yaml'
             }
         }
+        stage('Rollout') {
+            agent {
+                label "kubernetes"
+            }
+            steps {
+                sh 'kubectl rollout restart deployment.apps/nodeapp-deploy'
+            }
+        }
         
     }
 }
